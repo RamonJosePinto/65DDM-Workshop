@@ -1,37 +1,44 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import {Tabs} from "expo-router";
+import React from "react";
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import {TabBarIcon} from "@/components/navigation/TabBarIcon";
+import {Colors} from "@/constants/Colors";
+import {useColorScheme} from "@/hooks/useColorScheme";
+import {TabBarListIcon} from "@/components/navigation/TabBarListIcon";
+import {TabBarRegisterIcon} from "@/components/navigation/TabBarRegisterIcon";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+    const colorScheme = useColorScheme();
+    const iconColor = colorScheme === "light" ? Colors.light.tint : Colors.dark.tint;
 
-  return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-          ),
-        }}
-      />
-    </Tabs>
-  );
+    return (
+        <Tabs
+            screenOptions={{
+                tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+                headerShown: false,
+            }}
+        >
+            <Tabs.Screen
+                name="index"
+                options={{
+                    title: "Home",
+                    tabBarIcon: ({color, focused}) => <TabBarIcon name={focused ? "home" : "home-outline"} color={color} />,
+                }}
+            />
+            <Tabs.Screen
+                name="list"
+                options={{
+                    title: "Listar",
+                    tabBarIcon: ({color, focused}) => <TabBarListIcon name={"list"} color={iconColor} />,
+                }}
+            />
+            <Tabs.Screen
+                name="register"
+                options={{
+                    title: "Cadastrar",
+                    tabBarIcon: ({color, focused}) => <TabBarRegisterIcon name={focused ? "home" : "home-outline"} color={iconColor} />,
+                }}
+            />
+        </Tabs>
+    );
 }
