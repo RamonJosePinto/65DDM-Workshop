@@ -22,9 +22,12 @@ export const Colors = {
         item: {
             background: "#FFF",
         },
+        ListActivity: {
+            text: "#11181C",
+        },
     },
     dark: {
-        text: "#ECEDEE",
+        text: "#11181C",
         background: "#151718",
         tint: tintColorDark,
         icon: "#9BA1A6",
@@ -33,10 +36,13 @@ export const Colors = {
         button: {
             background: "rgb(18,18,18)",
             border: "rgb(39,39,39)",
-            text: "blue",
+            text: "#fff",
         },
         item: {
             background: "#11181C",
+            text: "#fff",
+        },
+        ListActivity: {
             text: "#fff",
         },
     },

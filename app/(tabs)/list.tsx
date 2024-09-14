@@ -20,7 +20,9 @@ const ListActivityScreen: React.FC = () => {
                 <FlatList
                     data={activities}
                     keyExtractor={item => item.id.toString()}
-                    renderItem={({item}) => <Text style={[styles.item, {color: currentColorSchema.text, backgroundColor: currentColorSchema.item.background}]}>{item.name}</Text>}
+                    renderItem={({item}) => (
+                        <Text style={[styles.item, {color: currentColorSchema.ListActivity.text, backgroundColor: currentColorSchema.item.background}]}>{item.name}</Text>
+                    )}
                 />
             )}
             <CustomButton title="Home" onPress={() => router.back()} />

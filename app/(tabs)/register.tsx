@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import {View, TextInput, Text, StyleSheet, useColorScheme} from "react-native";
-import {useRouter} from "expo-router";
 import {useActivity} from "../../components/ActivityContext";
 import {Colors} from "@/constants/Colors";
 import CustomButton from "@/components/CustomButton";
@@ -8,46 +7,42 @@ import {useFocusEffect} from "@react-navigation/native";
 
 const RegisterActivityScreen: React.FC = () => {
     const [activity, setActivity] = useState<string>("");
-    const [feedbackMessage, setFeedbackMessage] = useState<string>(""); // Estado para gerenciar a mensagem de feedback
-    const [isSuccess, setIsSuccess] = useState<boolean>(false); // Estado para diferenciar erro de sucesso
-    const {addActivity} = useActivity(); // Usando o contexto
-    const router = useRouter();
+    const [feedbackMessage, setFeedbackMessage] = useState<string>("");
+    const [isSuccess, setIsSuccess] = useState<boolean>(false);
+    const {addActivity} = useActivity();
     const colorScheme = useColorScheme();
 
     const currentColorSchema = Colors[colorScheme ?? "light"];
 
-    // Função para resetar a mensagem de feedback
     const resetFeedbackMessage = () => {
         setFeedbackMessage("");
     };
 
-    // Limpa a mensagem de feedback ao focar na tela
     useFocusEffect(
         React.useCallback(() => {
             resetFeedbackMessage();
         }, [])
     );
 
-    // Define um temporizador para limpar a mensagem de feedback após 3 segundos
     useEffect(() => {
         if (feedbackMessage !== "") {
             const timer = setTimeout(() => {
                 resetFeedbackMessage();
-            }, 3000); // Mensagem desaparece após 3 segundos
+            }, 3000);
 
-            return () => clearTimeout(timer); // Limpeza do temporizador ao desmontar o componente ou quando feedbackMessage muda
+            return () => clearTimeout(timer);
         }
     }, [feedbackMessage]);
 
     const handleRegister = () => {
         if (activity.trim() === "") {
-            setIsSuccess(false); // Define como erro
-            setFeedbackMessage("Informe a atividade a ser cadastrada"); // Mensagem de erro
+            setIsSuccess(false);
+            setFeedbackMessage("Informe a atividade a ser cadastrada");
         } else {
-            addActivity(activity); // Adicionando atividade ao contexto
+            addActivity(activity);
             setActivity("");
-            setIsSuccess(true); // Define como sucesso
-            setFeedbackMessage("Atividade cadastrada com sucesso"); // Mensagem de sucesso
+            setIsSuccess(true);
+            setFeedbackMessage("Atividade cadastrada com sucesso");
         }
     };
 
@@ -58,13 +53,7 @@ const RegisterActivityScreen: React.FC = () => {
                     style={[
                         styles.feedbackMessage,
                         {
-                            backgroundColor: isSuccess
-                                ? colorScheme === "dark"
-                                    ? "#3a7e5e"
-                                    : "#4CAF50" // Verde
-                                : colorScheme === "dark"
-                                ? "#842029"
-                                : "#ff505e", // Vermelho
+                            backgroundColor: isSuccess ? (colorScheme === "dark" ? "#3a7e5e" : "#4CAF50") : colorScheme === "dark" ? "#842029" : "#ff505e",
                             color: "#fff",
                             fontWeight: "600",
                         },
