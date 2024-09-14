@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from "react";
 import {View, TextInput, Text, StyleSheet, useColorScheme} from "react-native";
-import {useActivity} from "../../components/ActivityContext";
+
 import {Colors} from "@/constants/Colors";
 import CustomButton from "@/components/CustomButton";
 import {useFocusEffect} from "@react-navigation/native";
+import {useActivity} from "@/hooks/ActivityContext";
 
 const RegisterActivityScreen: React.FC = () => {
     const [activity, setActivity] = useState<string>("");

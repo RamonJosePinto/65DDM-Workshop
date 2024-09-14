@@ -1,9 +1,9 @@
 import React from "react";
 import {View, Text, Button, StyleSheet, FlatList, useColorScheme} from "react-native";
 import {useRouter} from "expo-router";
-import {useActivity} from "../../components/ActivityContext";
 import CustomButton from "@/components/CustomButton";
 import {Colors} from "@/constants/Colors";
+import {useActivity} from "@/hooks/ActivityContext";
 
 const ListActivityScreen: React.FC = () => {
     const {activities} = useActivity(); // Obtendo as atividades do contexto
