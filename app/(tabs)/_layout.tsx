@@ -22,21 +22,21 @@ export default function TabLayout() {
                 name="index"
                 options={{
                     title: "Home",
-                    tabBarIcon: ({color, focused}) => <TabBarIcon name={focused ? "home" : "home-outline"} color={color} />,
+                    tabBarIcon: ({color, focused}) => <TabBarIcon name={"home"} color={focused ? iconColor : "#687076"} />,
                 }}
             />
             <Tabs.Screen
                 name="list"
                 options={{
                     title: "Listar",
-                    tabBarIcon: ({color, focused}) => <TabBarListIcon name={"list"} color={iconColor} />,
+                    tabBarIcon: ({color, focused}) => <TabBarListIcon name={"list"} color={focused ? iconColor : "#687076"} />,
                 }}
             />
             <Tabs.Screen
                 name="register"
                 options={{
                     title: "Cadastrar",
-                    tabBarIcon: ({color, focused}) => <TabBarRegisterIcon name={focused ? "home" : "home-outline"} color={iconColor} />,
+                    tabBarIcon: ({color, focused}) => <TabBarRegisterIcon name={focused ? "home" : "home-outline"} color={focused ? iconColor : "#687076"} />,
                 }}
             />
         </Tabs>
